@@ -1,5 +1,5 @@
 import pytest
-from extract import get_input, remove_duplicates
+from extract import get_input, remove_duplicates, remove_empty_lines
 
 # ticket 1: test that .csv reads successfully into a list
 
@@ -57,3 +57,22 @@ def test_duplicates_removed():
     # Assert
     # If the number of elements in User_Ids is the sane same as that of User_Id_set, then there were no duplicates
     assert len(User_Ids) == len(User_Id_set)
+
+def test_empty_lines():
+
+    # Arrange
+    filename = 'results.csv'
+    data = get_input(filename)
+    no_empty_data = remove_empty_lines(data)
+
+    # Act
+    # Define an empty line as a line with a blank first element - i.e. no user ID
+    # Check there are no empty lines by cycling through the lines in data and counting any with a blank first element
+    emptylines = 0
+    for line in no_empty_data:
+        if line[0] == '':
+            emptylines = emptylines + 1
+
+    # Assert
+    assert emptylines == 0
+

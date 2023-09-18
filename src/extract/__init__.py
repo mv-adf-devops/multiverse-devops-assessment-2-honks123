@@ -21,3 +21,14 @@ def remove_duplicates(list):
 
     return deduped_list
 
+# Add function to remove empty lines
+
+def remove_empty_lines(list):
+    # loop through a list where each element is also a list retaining only lines where the first element of the line is not blank
+    no_empty_lines = []
+    for i in list:
+        if i[0] != '':
+            no_empty_lines.append(i)
+
+    return no_empty_lines
+
