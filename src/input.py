@@ -1,4 +1,4 @@
-from extract import get_input, remove_duplicates, remove_empty_lines
+from extract import get_input, remove_duplicates, remove_empty_lines, capitalise_names, validate_answer_3
 
 def main():
     filename = 'results.csv'
@@ -15,6 +15,15 @@ def main():
     results_noempty = remove_empty_lines(results_new)
     print("Without Empty lines:")
     print(results_noempty)
+    
+    results_capitalised = capitalise_names(results_noempty)
+    print("After names capitalised:")
+    print(results_capitalised)
+
+    results_validated = validate_answer_3(results_capitalised)
+    print("After answer 3 validated:")
+    print(results_validated)
+
 
     
 

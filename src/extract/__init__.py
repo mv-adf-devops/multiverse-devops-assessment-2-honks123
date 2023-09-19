@@ -32,3 +32,29 @@ def remove_empty_lines(list):
 
     return no_empty_lines
 
+def capitalise_names(list):
+    # loop through a list where each element is also a list capitalizing elements 1 and 2
+    # Initialise new list we will append to
+    newlist = []
+
+    for i in list:
+        i[1] = i[1].capitalize()
+        i[2] = i[2].capitalize()
+        newlist.append(i)
+    
+    return newlist
+
+def validate_answer_3(list):
+     # loop through a list where each element is also a 'sublist' retaining only sublists where element 5 is between 1 and 10 inclusive
+     # Assume first siblist is headers, so ignore
+    newlist = []
+    # Append the header row unchanged
+    newlist.append(list[0])
+    # Consider all the remaining rows for the test
+    for i in list[1:]:
+        if i[5] != '' and (int(i[5]) >=1 and int(i[5]) <= 10):
+            newlist.append(i)
+
+    return newlist
+
+

@@ -1,5 +1,5 @@
 import pytest
-from extract import get_input, remove_duplicates, remove_empty_lines
+from extract import get_input, remove_duplicates, remove_empty_lines, capitalise_names, validate_answer_3
 
 # ticket 1: test that .csv reads successfully into a list
 
@@ -63,9 +63,10 @@ def test_empty_lines():
     # Arrange
     filename = 'results.csv'
     data = get_input(filename)
-    no_empty_data = remove_empty_lines(data)
+    
 
     # Act
+    no_empty_data = remove_empty_lines(data)
     # Define an empty line as a line with a blank first element - i.e. no user ID
     # Check there are no empty lines by cycling through the lines in data and counting any with a blank first element
     emptylines = 0
@@ -75,4 +76,39 @@ def test_empty_lines():
 
     # Assert
     assert emptylines == 0
+
+def test_names_capitalised():
+
+    # Arrange
+    filename = 'results.csv'
+    data = get_input(filename)
+
+    # Act
+    capitalised_results = capitalise_names(data)
+    # Initialise a counter to count any failed capitalisations
+    failures = 0
+    for line in capitalised_results:
+        if line[1] != line[1].capitalize():
+            failures = failures + 1
+        if line[2] != line[2].capitalize():
+            failures = failures + 1
+
+    # Assert
+    assert failures == 0
+
+def test_answer_3():
+    # Arrange
+    filename = 'results.csv'
+    data = get_input(filename)
+
+    # Act
+    validated_results = validate_answer_3(data)
+    # Initialise a counter to count any answers outside range
+    invalid_answers = 0
+    for line in validated_results[1:]:
+        if int(line[5]) < 1 or int(line[5]) > 10:
+            invalid_answers += 1
+
+    # Assert
+    assert invalid_answers == 0
 
