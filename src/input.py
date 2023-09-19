@@ -1,4 +1,6 @@
 from extract import get_input, remove_duplicates, remove_empty_lines, capitalise_names, validate_answer_3
+import csv
+
 
 def main():
     filename = 'results.csv'
@@ -24,6 +26,9 @@ def main():
     print("After answer 3 validated:")
     print(results_validated)
 
+    with open('clean_results.csv', 'wb', newline='') as f:
+        writer = csv.writer(f, delimiter=',')
+        writer.writerows(results_validated)
 
     
 

@@ -57,4 +57,9 @@ def validate_answer_3(list):
 
     return newlist
 
+def write_output(list):
+    with list:
+        newfile = csv.writer(list)
+        
+
 

@@ -112,3 +112,10 @@ def test_answer_3():
     # Assert
     assert invalid_answers == 0
 
+def clean_results_exist():
+    # Arrange
+    
+    # Act
+    # Assert
+
+
