@@ -60,6 +60,10 @@ def validate_answer_3(list):
 def write_output(list):
     with list:
         newfile = csv.writer(list)
+
+def output_file_to_terminal(file):
+    get_input(file)
+    print(file)
         
 
 
